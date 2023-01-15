@@ -16,6 +16,16 @@ print (detect_usb_storage)
 
 #Function to detect and block USB devices on windows
 
+
+'''
+The function used the win32api module to get a list of 
+all the logical drives on the computer. It then iterates through
+the list and checks if the drive letter is 'F', which is typically 
+assigned to USB drives.If the drive is a USB drive, the function uses
+the win32api.SetVolumeMountPoint method to block the drive. If the 
+drive is not a USB drive the function allows it.
+'''
+
 import win32api
 
 def detect_and_block_usb_devices():
