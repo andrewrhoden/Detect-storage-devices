@@ -24,6 +24,14 @@ the list and checks if the drive letter is 'F', which is typically
 assigned to USB drives.If the drive is a USB drive, the function uses
 the win32api.SetVolumeMountPoint method to block the drive. If the 
 drive is not a USB drive the function allows it.
+
+****Note***WORK IN PROGRESSS***
+There are some issues with this code.
+ if you only have drive C so far and you plug a USB drive in.
+The Drive will get the letter 'D'.
+Therefore it will print  
+C:\is not a USB drive.. Allowing...
+D:\is not a USB drive.. Allowing...
 '''
 
 import win32api
@@ -36,6 +44,10 @@ def detect_and_block_usb_devices():
             print(drive + "is a USB drive. Blocking...")
             win32api.SetVolumeMountPoint(None,drive,0x00001000)
         else: print(drive+ "is not a USB drive.. Allowing...")
+
+detect_and_block_usb_devices()
+
+
 
 
 
